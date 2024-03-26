@@ -48,18 +48,14 @@ export default {
                 heading: "",
                 srcImg: require("../assets/BannerBlog.jpg")
             },
-            filter: [  // хранит отфильтрованный на текщий момент список
-                { name: 'KitchenArticleFull', teg: 'Kitchen' },
-                { name: 'PlanningKitchenArticleFull', teg: 'Kitchen Planning' },
-                { name: 'ArchitectureArticleFull', teg: 'Architecture' },
-                { name: 'BuildingArticleFull', teg: 'Building' },
-                { name: 'BedroomArticleFull', teg: 'Bedroom' },
-                { name: 'Bedroom2ArticleFull', teg: 'Bedroom' }
-            ]
-        }
+            filter:  [] 
+            }
     },
     computed: {
-        ...mapState(['articlesFull', 'tegsBlog'])
+        ...mapState(['articlesFull', 'tegsBlog']),
+    },
+    created() {
+        this.filter = this.articlesFull
     },
     methods: {  // фильтрует данные на странице
         getFilter(teg) {

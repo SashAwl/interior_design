@@ -47,6 +47,7 @@ export default ({
             articlesNewsSettings: { // регулирует внешний вид компонента Articles&News на данной странице
                 longText: true,
                 alignHeading: { 'align-items': 'center' },
+                isShowLatestNews: false,
                 countCard: 3
             },
         }

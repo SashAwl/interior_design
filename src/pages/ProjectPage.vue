@@ -1,7 +1,7 @@
 <template>
   <div>
     <TopBlock :topData="topData" />
-    <OurProjects @checkedButton="checkButton($event)" :tegItems="tegs" class="center" />
+    <OurProjects class="center"/>
   </div>
 </template>
   
@@ -22,19 +22,7 @@ export default {
         link: "Project",
         heading: "Our Project",
         srcImg: require("../assets/BannerProject.jpg")
-      },
-      tegs: [
-        { tegName: 'Bathroom', checked: false },
-        { tegName: 'Bedroom', checked: false },
-        { tegName: 'Kitchen', checked: false },
-        { tegName: 'Living Area', checked: false }
-      ]
-    }
-  },
-  methods: {
-    checkButton(index) {
-      this.tegs.forEach(item => item.checked = false)
-      this.tegs[index].checked = true
+      }
     }
   }
 }

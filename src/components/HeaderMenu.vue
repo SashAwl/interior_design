@@ -6,25 +6,26 @@
                     d="M0 34.0003H13.4588V24.499C13.4588 22.4853 15.0898 20.8543 17.1035 20.8543C19.1172 20.8543 20.7482 22.4853 20.7482 24.499V34.0003H33.9975V0C15.2211 0 0 15.2211 0 34.0003Z"
                     fill="#CDA274" />
             </svg>
-            <span>Interno</span>
+            <routerLink to="/" class="toHome">Interno</routerLink>
         </div>
         <nav class="header__nav">
-            <span class="header__nav-item">Home</span>
-            <span class="header__nav-item">Project</span>
-            <span class="header__nav-item">Blog</span>
+            <router-link to="/" class="header__nav-item">Home</router-link>
+            <router-link to="/project" class="header__nav-item">Project</router-link>
+            <router-link to="/blog" class="header__nav-item">Blog</router-link>
         </nav>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'HeaderSite.vue'
+    name: 'HeaderSite.vue'
 }
 </script>
 
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Jost:wght@100;400&display=swap');
 @import "../assets/_variables";
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -37,7 +38,8 @@ export default {
         align-items: center;
     }
 
-    &__logo>span {
+    .toHome {
+        text-decoration: none;
         color: $colorHeading;
         font-family: $fontSerif;
         text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);

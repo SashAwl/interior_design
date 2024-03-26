@@ -5,30 +5,31 @@
             <h2 class="latest-post__heading">
                 Latest Post
             </h2>
-            <div class="latest-post__content">
-                <img :src="latestPostData.src" alt="photo">
-                <div class="content__description">
-                    <h3 class="content__description-heading"><a
-                            :href="latestPostData.linkFullText">{{ latestPostData.headText }} </a></h3>
-                    <div class="content__description-text">
-                        <p>{{ latestPostData.longText1 }}</p>
-                        <p>{{ latestPostData.longText2 }}</p>
+            <div class="content__description-text">
+                <div class="latest-post__content">
+                    <img :src="articles[articles.length-1].src" alt="photo">
+                    <div class="content__description"> 
+                        <h3 class="content__description-heading"><a
+                                href="#">{{ articles[articles.length-1].headText }} </a></h3>
+                        <div class="content__description-text">
+                            <p v-html="articles[articles.length-1].describeText"></p>
+                        </div>
+                        <div class="content__description-data">
+                            <p class="content-data-number">{{ articles[articles.length-1].data }} </p>
+                            <a href="#"><svg width="52" height="53" viewBox="0 0 52 53" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="26" cy="26.5" r="26" fill="#F4F0EC" />
+                                    <path d="M23.771 33.1855L29.7139 26.4998L23.771 19.8141" stroke="#292F36" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg></a>
+                        </div>
+                    
                     </div>
-                    <div class="content__description-data">
-                        <p class="content-data-number">{{ latestPostData.data }} </p>
-                        <a :href="latestPostData.linkFullText"><svg width="52" height="53" viewBox="0 0 52 53" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="26" cy="26.5" r="26" fill="#F4F0EC" />
-                                <path d="M23.771 33.1855L29.7139 26.4998L23.771 19.8141" stroke="#292F36" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg></a>
-                    </div>
-
                 </div>
             </div>
         </div>
         <ArticlesNews :settings="articlesNewsSettings" />
-    </div>
+    </div> 
 </template>
 
 <script>
@@ -53,12 +54,13 @@ export default ({
             articlesNewsSettings: {  // регулирует внешний вид компонента Articles&News на данной странице
                 longText: false,
                 alignHeading: { 'align-items': 'flex-start' },
+                isShowLatestNews: true,
                 countCard: 6
             }
         }
     },
     computed: {
-        ...mapState(['latestPostData'])
+        ...mapState(['articles'])
     }
 })
 </script>

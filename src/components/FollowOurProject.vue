@@ -30,7 +30,6 @@ import { mapState } from 'vuex';
 
 export default ({
     name: 'FollowOurProject',
-    // props: ['followProjects']
     computed: {
         ...mapState(['followProjects'])
     }

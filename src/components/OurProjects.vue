@@ -1,23 +1,22 @@
 <template>
     <div class="our-project">
         <div class="teg-buttons">
-            <button v-for="(teg, index) in tegItems" :key="teg.index" @click="checkedTeg(index, teg)" class="teg-button" :class="{'teg-button-checked' : teg.checked}">{{teg.tegName}}</button>
+            <button v-for="(teg, index) in tegs" :key="teg.index" @click="checkButton(index, teg)" class="teg-button" :class="{'teg-button-checked' : teg.checked}">{{teg.tegName}}</button>
         </div>
         <div class="articles">
             <div class="article" v-for="(project, index) in filterList" :key="index">
-            <!-- <img :src="project.img" alt="photo"> -->
-                <div class="photo"></div>
+                <img :src="project.img" alt="photo" class="photo">
                 <div class="article-text">
                     <div>
                         <h3 class="heading">{{ project.heading }}</h3>
                         <a href="project.links[0].link" class="text">{{ project.links[0].name }}</a> / 
                         <a href="project.links[1].link" class="text">{{ project.links[1].name }}</a>
                     </div>
-                    <a href="#">
+                    <router-link to="project-details">
                         <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="35" cy="35" r="35" fill="#F4F0EC"/>
 <path d="M32 44L40 35L32 26" stroke="#292F36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg></a>
+                    </svg></router-link>
                 </div>
             </div>
         </div>
@@ -27,26 +26,32 @@
 
 <script>
 import PropoginationLinks from './PropoginationLinks.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'OurProject',
-  props: ['projectItems', 'tegItems'],
-  data () {
-    return {
-        currentTeg: '',
-        projects: this.projectItems,
-        filterList: this.projectItems
-    }
-  },
   components: {
     PropoginationLinks
   },
+  data () {
+    return {
+        tegsState: [],
+        filterList: []
+    }
+  },
+  computed: {
+    ...mapState(['projects', 'tegs'])
+  },
+  created() {
+    this.filterList = this.projects
+    this.tegsState = this.tegs
+  },
   methods: {
-    checkedTeg (index, teg) {
-        this.currentTeg = teg.tegName
-        this.$emit('checkedButton', index)
+    checkButton(index, teg) {
+      this.tegsState.forEach(item => item.checked = false)
+      this.tegs[index].checked = true
 
-        this.filterList = this.projects.filter(item => item.teg === this.currentTeg)
+      this.filterList = this.projects.filter(item => item.teg === teg.tegName)
     }
   }
 }
@@ -110,10 +115,9 @@ export default {
         }
 
         .photo {
-            background-color: #cda27470;
             width: 100%;
-            height: 300px;
         }
+
         .heading {
             color: #292F36;
             font-family: $fontSerif;

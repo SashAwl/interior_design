@@ -7,18 +7,18 @@
                 <p class="content_text" v-for="paragraph in projectDetails.text" :key="paragraph.id">{{ paragraph }}</p>
             </div>
         </div>
-        <carousel class="carousel center">
+        <!-- <carousel class="carousel center">
             <slide v-for="img in carouselImg" :key="img.id">
                 <img class="slide" :src='img' alt="photo">
             </slide>
-        </carousel>
+        </carousel> -->
     </div>
 </template>
 
 <script>
 import TopBlock from '../components/TopBlock.vue'
 import { mapMutations, mapState } from "vuex"
-import { Carousel, Slide } from 'vue-carousel'
+// import { Carousel, Slide } from 'vue-carousel'
 
 
 export default {
@@ -31,20 +31,20 @@ export default {
                 heading: "Our Project",
                 srcImg: require("../assets/Banner1.jpg")
             },
-            carouselImg: [
-                require('../assets/carousel/img1.4.jpg'),
-                require('../assets/carousel/img1.5.jpg'),
-                require('../assets/carousel/img1.1.jpg'),
-                require('../assets/carousel/img1.4.jpg'),
-                require('../assets/carousel/img1.5.jpg'),
-                require('../assets/carousel/img1.1.jpg')
-            ]
+            // carouselImg: [
+            //     require('../assets/carousel/img1.4.jpg'),
+            //     require('../assets/carousel/img1.5.jpg'),
+            //     require('../assets/carousel/img1.1.jpg'),
+            //     require('../assets/carousel/img1.4.jpg'),
+            //     require('../assets/carousel/img1.5.jpg'),
+            //     require('../assets/carousel/img1.1.jpg')
+            // ]
         }
     },
     components: {
         TopBlock,
-        Carousel,
-        Slide
+        // Carousel,
+        // Slide
     },
     computed: {
         ...mapState(['projectDetails'])
