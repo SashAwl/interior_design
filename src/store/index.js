@@ -67,7 +67,6 @@ export default new Vuex.Store({
         { heading: 'Minimal Bath', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img2.4.jpg"), teg: 'Bathroom' },
         { heading: 'Classical Kitchen', links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img3.1.jpg"), teg: 'Kitchen' },
         { heading: 'Minimal Kitchen', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img3.2.jpg"), teg: 'Kitchen' },
-        { heading: 'Minimal Kitchen', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img3.3.jpg"), teg: 'Kitchen' },
         { heading: 'Minimal Living Room', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img4.1.jpg"), teg: 'Living Area' },
         { heading: 'Classical Living Room', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img4.2.jpg"), teg: 'Living Area' },
         { heading: 'Classical Living Room', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img4.3.jpg"), teg: 'Living Area' },
