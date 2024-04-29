@@ -5,20 +5,22 @@
             content of page lookings at its layouts points.</p>
         <div class="follow_project-projects">
             <div v-for="(project, index) in followProjects" :key="index" class="project-item">
-                <img :src="project.srcImg" alt="photo" :class="project.class">
-                <div class="project-item-text">
-                    <div>
-                        <h3 class="heading"><a :href="project.linkCard">{{ project.heading }}</a></h3>
-                        <a :href="project.links[0].link" class="text">{{ project.links[0].name }}</a> /
-                        <a :href="project.links[1].link" class="text">{{ project.links[1].name }}</a>
-                    </div>
-                    <a href="#">
+                <router-link to='/project'>
+                    <img :src="project.srcImg" alt="photo" :class="project.class">
+                    <div class="project-item-text">
+                        <div>
+                            <h3 class="heading"><a :href="project.linkCard">{{ project.heading }}</a></h3>
+                            <a :href="project.links[0].link" class="text">{{ project.links[0].name }}</a> /
+                            <a :href="project.links[1].link" class="text">{{ project.links[1].name }}</a>
+                        </div>
+
                         <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="35" cy="35" r="35" fill="#F4F0EC" />
                             <path d="M32 44L40 35L32 26" stroke="#292F36" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" />
-                        </svg></a>
-                </div>
+                        </svg>
+                    </div>
+                </router-link>
             </div>
 
         </div>
@@ -60,6 +62,11 @@ export default ({
         letter-spacing: 1px;
         margin-top: 100px;
         margin-bottom: 0;
+        transition: transform 0.1s ease-in;
+    }
+
+    &-heading:hover {
+        transform: scale(1.02);
     }
 
     &-text {
@@ -84,6 +91,20 @@ export default ({
         flex-direction: column;
         align-items: flex-start;
         font-weight: 400;
+        transition: transform 0.1s ease-in;
+
+        a {
+            text-decoration: none;
+            color: #292F36;
+            font-family: $fontSerif;
+            font-size: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        & img:hover {
+            transform: scale(1.02);
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        }
 
         .top-left {
             border-top-left-radius: 100px;
@@ -101,25 +122,25 @@ export default ({
             border-bottom-right-radius: 100px;
         }
 
-
         &-text {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
             margin: 10px 0;
+
+            svg {
+                transition: transform 0.1s ease-in;
+            }
+
+            svg:hover {
+                transform: scale(1.2);
+            }
         }
 
         .heading {
+            margin-top: 5px;
             margin-bottom: 7px;
-
-            a {
-                text-decoration: none;
-                color: #292F36;
-                font-family: $fontSerif;
-                font-size: 25px;
-                letter-spacing: 0.5px;
-            }
         }
 
         .text {

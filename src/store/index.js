@@ -44,12 +44,11 @@ export default new Vuex.Store({
     ],
     tegsBlog:  // данные для страницы BlogDetailsPage
       [
-        { name: "Kitchen", tegChecked: false },
+        { name: "Kitchen", tegChecked: true },
         { name: "Kitchen Planning", tegChecked: false },
         { name: "Architecture", tegChecked: false },
         { name: "Building", tegChecked: false },
-        { name: "Bedroom", tegChecked: false },
-        { name: "All", tegChecked: true }
+        { name: "Bedroom", tegChecked: false }
       ],
     projects: // данные для страницы ProjectPage
       [
@@ -79,6 +78,15 @@ export default new Vuex.Store({
         { tegName: 'Bedroom', checked: false },
         { tegName: 'Kitchen', checked: false },
         { tegName: 'Living Area', checked: false }
+      ],
+    sliderImgList:
+      [
+        { id: 1, name: "img1", imgSrc: "1.1.jpg" },
+        { id: 2, name: "img2", imgSrc: "1.2.jpg" },
+        { id: 3, name: "img3", imgSrc: "1.3.jpg" },
+        { id: 4, name: "img4", imgSrc: "1.4.jpg" },
+        { id: 5, name: "img1", imgSrc: "1.5.jpg" },
+        { id: 6, name: "img2", imgSrc: "1.6.jpg" }
       ]
   },
   mutations: {}

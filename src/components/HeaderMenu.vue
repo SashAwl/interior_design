@@ -36,6 +36,11 @@ export default {
     &__logo {
         display: flex;
         align-items: center;
+        transition: transform 0.1s ease-in;
+
+        &:hover {
+            transform: scale(1.02);
+        }
     }
 
     .toHome {
@@ -57,8 +62,11 @@ export default {
             font-family: $fontSansSerif;
             text-align: center;
             font-size: 20px;
-            font-family: Jost;
-            line-height: 125%;
+            transition: transform 0.1s ease-in;
+
+            &:hover {
+                transform: scale(1.02);
+            }
         }
 
         &-item~&-item {

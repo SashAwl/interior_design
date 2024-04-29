@@ -1,5 +1,5 @@
 <template>
-  <ul class="propagination">
+  <ul class="pagination">
     <li>
       <button type="button" @click="onClickFirstPage" :disabled="isInFirstPage"
         :class="{ 'block-button': isInFirstPage }">
@@ -111,7 +111,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Jost:wght@100;400&display=swap');
 @import "../assets/_variables";
 
-.propagination {
+.pagination {
   display: flex;
   justify-content: center;
   margin-top: 51px;
@@ -128,16 +128,23 @@ export default {
     border: 1px solid $colorBeige;
     background: white;
     cursor: pointer;
+    transition: transform 0.1s ease-in;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 
   .disabled-button {
     background: #F4F0EC;
     border: none;
     cursor: auto;
+    pointer-events: none;
   }
 
   .block-button {
     cursor: auto;
+    pointer-events: none;
   }
 
   li {

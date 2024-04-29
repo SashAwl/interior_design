@@ -48,24 +48,26 @@ export default {
                 heading: "",
                 srcImg: require("../assets/BannerBlog.jpg")
             },
-            filter:  [] 
-            }
+            filter: [],
+            scrollTop: 0
+        }
     },
     computed: {
         ...mapState(['articlesFull', 'tegsBlog']),
     },
     created() {
-        this.filter = this.articlesFull
+        this.filter = this.articlesFull.filter((item) => item.teg === "Kitchen");
     },
     methods: {  // фильтрует данные на странице
         getFilter(teg) {
             this.tegsBlog.forEach(itemTeg => { itemTeg.tegChecked = false });
             teg.tegChecked = true;
-            if (teg.name === 'All') {
-                this.filter = this.articlesFull
-            } else {
-                this.filter = this.articlesFull.filter((item) => item.teg === teg.name)
-            }
+            // if (teg.name === 'All') {
+            //     this.filter = this.articlesFull
+            // } else {
+            //     this.filter = this.articlesFull.filter((item) => item.teg === teg.name)
+            // }
+            this.filter = this.articlesFull.filter((item) => item.teg === teg.name)
         }
     }
 }
@@ -116,6 +118,12 @@ export default {
                 background: #F4F0EC;
                 padding: 9px 30px;
                 cursor: pointer;
+                transition: transform 0.1s ease-in;
+
+                &:hover {
+                    transform: scale(1.02);
+                    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+                }
             }
         }
 

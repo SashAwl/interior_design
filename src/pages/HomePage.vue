@@ -8,13 +8,16 @@
                         There are many variations of the passages of
                         lorem Ipsum from available, majority.
                     </p>
-                    <button class="top__content-button">
-                        <router-link to="/project">Get Started</router-link>
-                        <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2 8.43542L15.7232 8.29857M10.6182 1.91138L17.1412 8.43436L10.4868 15.0887"
-                                stroke="#CDA274" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" />
-                        </svg>
-                    </button>
+                    <router-link to="/project">
+                        <button class="top__content-button">
+                            Get Started
+                            <svg width="19" height="17" viewBox="0 0 19 17" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 8.43542L15.7232 8.29857M10.6182 1.91138L17.1412 8.43436L10.4868 15.0887"
+                                    stroke="#CDA274" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </router-link>
                 </div>
             </div>
             <FollowOurProject />
@@ -103,22 +106,28 @@ export default ({
             box-shadow: 0px 10px 20px 0px rgba(192, 192, 192, 0.35);
             display: flex;
             align-items: center;
+            color: white;
+            margin-right: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-family: $fontSansSerif;
+            font-weight: 600;
+            line-height: 125%;
+            letter-spacing: 0.36px;
+            cursor: pointer;
+            transition: transform 0.1s ease-in;
 
-            &>a {
-                text-decoration: none;
-                margin-right: 8px;
-                color: white;
-                text-align: center;
-                font-size: 18px;
-                font-family: $fontSansSerif;
-                font-weight: 600;
-                line-height: 125%;
-                letter-spacing: 0.36px;
+            &:hover {
+                transform: scale(1.05);
             }
+        }
 
-            &[path] {
-                fill: $colorBeige;
-            }
+        &>a {
+            text-decoration: none;
+        }
+
+        &[path] {
+            fill: $colorBeige;
         }
     }
 }

@@ -6,19 +6,15 @@
                 <h3 class="content_heading">{{ projectDetails.heading }}</h3>
                 <p class="content_text" v-for="paragraph in projectDetails.text" :key="paragraph.id">{{ paragraph }}</p>
             </div>
+            <SliderImg :dataList="sliderImgList" :interval="sliderInterval" />
         </div>
-        <!-- <carousel class="carousel center">
-            <slide v-for="img in carouselImg" :key="img.id">
-                <img class="slide" :src='img' alt="photo">
-            </slide>
-        </carousel> -->
     </div>
 </template>
 
 <script>
 import TopBlock from '../components/TopBlock.vue'
 import { mapMutations, mapState } from "vuex"
-// import { Carousel, Slide } from 'vue-carousel'
+import SliderImg from '../components/slider_components/SliderImg.vue'
 
 
 export default {
@@ -31,23 +27,15 @@ export default {
                 heading: "Our Project",
                 srcImg: require("../assets/Banner1.jpg")
             },
-            // carouselImg: [
-            //     require('../assets/carousel/img1.4.jpg'),
-            //     require('../assets/carousel/img1.5.jpg'),
-            //     require('../assets/carousel/img1.1.jpg'),
-            //     require('../assets/carousel/img1.4.jpg'),
-            //     require('../assets/carousel/img1.5.jpg'),
-            //     require('../assets/carousel/img1.1.jpg')
-            // ]
+            sliderInterval: 4000
         }
     },
     components: {
         TopBlock,
-        // Carousel,
-        // Slide
+        SliderImg
     },
     computed: {
-        ...mapState(['projectDetails'])
+        ...mapState(['projectDetails', 'sliderImgList'])
     },
     methods: {
         ...mapMutations([])

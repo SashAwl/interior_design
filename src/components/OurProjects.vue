@@ -6,10 +6,12 @@
         </div>
         <div class="articles">
             <div class="article" v-for="(project, index) in getFilterListPages" :key="index">
-                <img :src="project.img" alt="photo" class="photo">
+                <router-link to="project-details" class="photo"><img :src="project.img" alt="photo"></router-link>
                 <div class="article-text">
                     <div>
-                        <h3 class="heading">{{ project.heading }}</h3>
+                        <router-link to="project-details">
+                            <h3 class="heading">{{ project.heading }}</h3>
+                        </router-link>
                         <a href="project.links[0].link" class="text">{{ project.links[0].name }}</a> /
                         <a href="project.links[1].link" class="text">{{ project.links[1].name }}</a>
                     </div>
@@ -113,6 +115,10 @@ export default {
 .our-project {
     margin-top: 150px;
     margin-bottom: 150px;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 .teg-buttons {
@@ -129,12 +135,17 @@ export default {
         font-size: 18px;
         font-weight: 600;
         line-height: 125%;
-        /* 22.5px */
         letter-spacing: 0.36px;
         border: none;
         background-color: white;
         border-radius: 18px;
         cursor: pointer;
+        transition: transform 0.1s ease-in;
+
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        }
 
         &-checked {
             background: #CDA274;
@@ -160,10 +171,29 @@ export default {
             align-items: center;
             width: 100%;
             margin: 10px 0;
+
+            svg {
+                transition: transform 0.1s ease-in;
+            }
+
+            svg:hover {
+                transform: scale(1.2);
+            }
         }
 
         .photo {
+            display: block;
             width: 100%;
+
+            img {
+                width: 100%;
+                transition: transform 0.1s ease-in;
+
+                &:hover {
+                    transform: scale(1.02);
+                    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+                }
+            }
         }
 
         .heading {

@@ -2,8 +2,6 @@
   <div id="app">
     <HeaderMenu class="center" />
     <router-view />
-    <!-- <PageOurProject/> -->
-    <!-- <PageProjectDetails /> -->
     <FooterSite class="center" />
   </div>
 </template>
@@ -11,16 +9,12 @@
 <script>
 import HeaderMenu from './components/HeaderMenu.vue'
 import FooterSite from './components/FooterSite.vue'
-// import PageOurProject from './components/PageOurProject.vue'
-// import PageProjectDetails from './components/PageProjectDetails.vue'
 
 export default {
   name: 'App',
   components: {
     HeaderMenu,
     FooterSite,
-    // PageProjectDetails,
-    // PageOurProject    
   },
   data() {
     return {}
