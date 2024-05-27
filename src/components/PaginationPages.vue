@@ -84,23 +84,18 @@ export default {
   },
   methods: {
     onClickFirstPage() {
-      // this.currentPage = 1;
       this.$emit('pagechanged', 1);
     },
     onClickPreviousPage() {
-      // this.currentPage = this.currentPage - 1;
       this.$emit('pagechanged', this.currentPage - 1);
     },
     onClickPage(page) {
-      // this.currentPage = page;
       this.$emit('pagechanged', page);
     },
     onClickNextPage() {
-      // this.currentPage = this.currentPage + 1;
       this.$emit('pagechanged', this.currentPage + 1);
     },
     onClickLastPage() {
-      // this.currentPage = this.totalPages;
       this.$emit('pagechanged', this.totalPages);
     }
   }
@@ -145,6 +140,7 @@ export default {
   .block-button {
     cursor: auto;
     pointer-events: none;
+    opacity: 50%;
   }
 
   li {

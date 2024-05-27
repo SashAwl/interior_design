@@ -2,27 +2,39 @@
     <div>
         <TopBlock :topData="topData" />
         <div class="latest-post center">
-            <h2 class="latest-post__heading">
-                Latest Post
-            </h2>
-            <div class="content__description-text">
+            <div class="head-box" :class="{ 'hide-border': !isVisibleLatestPost }">
+                <h2 class="latest-post__heading">
+                    Latest Post
+                </h2>
+                <p class="text" @click="openCloseLatestPost">{{ isVisibleLatestPost ? 'Hide' : 'Show' }}</p>
+            </div>
+            <div class="content__description-text" v-if="isVisibleLatestPost">
                 <div class="latest-post__content">
-                    <a href="#"><img :src="articles[articles.length - 1].src" alt="photo"></a>
+                    <router-link
+                        :to="{ name: 'BlogDetailsPageItem', params: { id: articles[articles.length - 1].id } }">
+                        <img :src="articles[articles.length - 1].src" alt="photo">
+                    </router-link>
                     <div class="content__description">
-                        <h3 class="content__description-heading"><a href="#">{{ articles[articles.length - 1].headText
-                                }}
-                            </a></h3>
-                        <div class="content__description-text">
+                        <h3 class="content__description-heading">
+                            <router-link
+                                :to="{ name: 'BlogDetailsPageItem', params: { id: articles[articles.length - 1].id } }">
+                                {{ articles[articles.length - 1].headText }}
+                            </router-link>
+                        </h3>
+                        <div class="text">
                             <p v-html="articles[articles.length - 1].describeText"></p>
                         </div>
                         <div class="content__description-data">
                             <p class="content-data-number">{{ articles[articles.length - 1].data }} </p>
-                            <a href="#"><svg width="52" height="53" viewBox="0 0 52 53" fill="none"
+                            <router-link
+                                :to="{ name: 'BlogDetailsPageItem', params: { id: articles[articles.length - 1].id } }">
+                                <svg width="52" height="53" viewBox="0 0 52 53" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="26" cy="26.5" r="26" fill="#F4F0EC" />
                                     <path d="M23.771 33.1855L29.7139 26.4998L23.771 19.8141" stroke="#292F36"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg></a>
+                                </svg>
+                            </router-link>
                         </div>
 
                     </div>
@@ -56,12 +68,19 @@ export default ({
                 longText: false,
                 alignHeading: { 'align-items': 'flex-start' },
                 isShowLatestNews: true,
-                countCard: 6
-            }
+                countCard: 6,
+                isCardSlider: false
+            },
+            isVisibleLatestPost: true
         }
     },
     computed: {
         ...mapState(['articles'])
+    },
+    methods: {
+        openCloseLatestPost() {
+            this.isVisibleLatestPost = !this.isVisibleLatestPost;
+        }
     }
 })
 </script>
@@ -76,7 +95,22 @@ export default ({
 }
 
 .latest-post {
-    margin-top: 212px;
+    margin-top: 120px;
+
+    .head-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            cursor: pointer;
+            transition: transform 0.1s ease-in;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+        }
+    }
 
     &__heading {
         color: $colorHeading;
@@ -107,7 +141,6 @@ export default ({
 
         .content__description {
             width: 463px;
-            font-weight: 400;
 
             &-heading a {
                 text-decoration: none;
@@ -121,14 +154,6 @@ export default ({
 
             &-heading:hover {
                 transform: scale(1.02);
-            }
-
-            &-text {
-                color: $colorText;
-                font-size: 22px;
-                font-family: $fontSansSerif;
-                line-height: 150%;
-                letter-spacing: 0.22px;
             }
 
             &-data {
@@ -155,5 +180,20 @@ export default ({
 
         }
     }
+}
+
+.text {
+    color: $colorText;
+    font-size: 22px;
+    font-family: $fontSansSerif;
+    line-height: 150%;
+    letter-spacing: 0.22px;
+    font-weight: 400;
+}
+
+.hide-border {
+    border-bottom: 1px solid #E7E7E7;
+    box-shadow: 0px 10px 30px 0px rgba(255, 255, 255, 0.25);
+
 }
 </style>

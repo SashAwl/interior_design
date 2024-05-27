@@ -51,7 +51,8 @@ export default ({
                 longText: true,
                 alignHeading: { 'align-items': 'center' },
                 isShowLatestNews: false,
-                countCard: 3
+                countCard: 3,
+                isCardSlider: true
             },
         }
     },

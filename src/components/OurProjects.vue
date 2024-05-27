@@ -1,8 +1,8 @@
 <template>
     <div class="our-project">
-        <div class="teg-buttons">
-            <button v-for="(teg, index) in tegs" :key="teg.index" @click="checkFilterButton(index, teg)"
-                class="teg-button" :class="{ 'teg-button-checked': teg.checked }">{{ teg.tegName }}</button>
+        <div class="tag-buttons">
+            <button v-for="(tag, index) in tags" :key="tag.index" @click="checkFilterButton(index, tag)"
+                class="tag-button" :class="{ 'tag-button-checked': tag.checked }">{{ tag.tagName }}</button>
         </div>
         <div class="articles">
             <div class="article" v-for="(project, index) in getFilterListPages" :key="index">
@@ -42,7 +42,7 @@ export default {
     },
     data() {
         return {
-            tegsState: [],
+            tagsState: [],
             filterList: [],
             paginationDetails: {
                 currentPage: 1,
@@ -55,11 +55,11 @@ export default {
     },
     created() {
         this.filterList = this.projects;
-        this.tegsState = this.tegs;
+        this.tagsState = this.tags;
         this.paginationDetails.totalPages = Math.ceil(this.filterList.length / this.paginationDetails.perPage);
     },
     computed: {
-        ...mapState(['projects', 'tegs']),
+        ...mapState(['projects', 'tags']),
 
         getPaginationDetails() {
             const { perPage, countVisibleButtons } = this.paginationDetails;
@@ -88,11 +88,11 @@ export default {
         }
     },
     methods: {
-        checkFilterButton(index, teg) {
-            this.tegsState.forEach(item => item.checked = false);
-            this.tegs[index].checked = true;
+        checkFilterButton(index, tag) {
+            this.tagsState.forEach(item => item.checked = false);
+            this.tags[index].checked = true;
 
-            this.filterList = this.projects.filter(item => item.teg === teg.tegName);
+            this.filterList = this.projects.filter(item => item.tag === tag.tagName);
             this.paginationDetails.currentPage = 1;
         },
 
@@ -121,14 +121,14 @@ export default {
     }
 }
 
-.teg-buttons {
+.tag-buttons {
     border: 1px solid #CDA274;
     border-radius: 20px;
     margin: 0 auto;
     margin-bottom: 60px;
     width: max-content;
 
-    .teg-button {
+    .tag-button {
         padding: 26px 66px;
         text-align: center;
         font-family: $fontSansSerif;

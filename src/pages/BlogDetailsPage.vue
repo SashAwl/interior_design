@@ -1,44 +1,44 @@
 <template>
     <div>
         <TopBlock :topData="topData" />
-        <div class="full-articles center" id="appArticles">
+        <BackButton class="center indent-back-button" />
+        <div class="full-articles center">
             <div class="full-articles__list">
-                <component v-for="item in filter" :is="item.name" :key="item.id"></component>
+                <component v-for="item in filterListComponents" :is="item" :key="item.id">
+                </component>
             </div>
-            <div class="full-articles__tegs">
-                <h5 class="tegs__heading">
+
+            <div class="full-articles__tags">
+                <h5 class="tags__heading">
                     Tags
                 </h5>
-                <div class="full-articles__tegs-block">
-                    <button @click="getFilter(teg)" v-for="teg in tegsBlog" :key="teg.id"
-                        class='full-articles__tegs-block-item' :class="{ 'checked-teg': teg.tegChecked }">{{ teg.name
-                        }}</button>
+                <div class="full-articles__tags-block">
+                    <button @click="getFilterListComponents(tag)" v-for="tag in tagsBlog" :key="tag.id"
+                        class='full-articles__tags-block-item' :class="{ 'checked-tag': tag.tagChecked }">{{
+            tag.name }}</button>
                 </div>
             </div>
+
         </div>
     </div>
 </template>
 
 <script>
 import TopBlock from '../components/TopBlock.vue';
-import KitchenArticleFull from '../components/articles_full_components/KitchenArticleFull.vue';
-import PlanningKitchenArticleFull from '../components/articles_full_components/PlanningKitchenArticleFull.vue';
-import ArchitectureArticleFull from '../components/articles_full_components/ArchitectureArticleFull.vue';
-import BuildingArticleFull from '../components/articles_full_components/BuildingArticleFull.vue';
-import BedroomArticleFull from '../components/articles_full_components/BedroomArticleFull.vue';
-import Bedroom2ArticleFull from '../components/articles_full_components/Bedroom2ArticleFull.vue';
+import BackButton from '@/components/BackButton.vue';
 import { mapState } from 'vuex';
 
 export default {
     name: 'BlogDetailsPage',
     components: {
         TopBlock,
-        KitchenArticleFull,
-        PlanningKitchenArticleFull,
-        ArchitectureArticleFull,
-        BuildingArticleFull,
-        BedroomArticleFull,
-        Bedroom2ArticleFull
+        BackButton,
+        // KitchenArticleFull,
+        // PlanningKitchenArticleFull,
+        // ArchitectureArticleFull,
+        // BuildingArticleFull,
+        // BedroomArticleFull,
+        // Bedroom2ArticleFull
     },
     data() {
         return {
@@ -48,26 +48,52 @@ export default {
                 heading: "",
                 srcImg: require("../assets/BannerBlog.jpg")
             },
-            filter: [],
-            scrollTop: 0
+            filterListComponents: null,
+            currentArticleComponents: null,
+            errorLoadSomeComponent: false
         }
     },
     computed: {
-        ...mapState(['articlesFull', 'tegsBlog']),
+        ...mapState(['articles', 'tagsBlog'])
     },
-    created() {
-        this.filter = this.articlesFull.filter((item) => item.teg === "Kitchen");
+    async created() {
+        await this.loadArticleComponents(this.articles.map(article => article.nameComponent));
+        this.filterListComponents = this.currentArticleComponents;
+        console.log(this.filterListComponents)
     },
     methods: {  // фильтрует данные на странице
-        getFilter(teg) {
-            this.tegsBlog.forEach(itemTeg => { itemTeg.tegChecked = false });
-            teg.tegChecked = true;
-            // if (teg.name === 'All') {
-            //     this.filter = this.articlesFull
-            // } else {
-            //     this.filter = this.articlesFull.filter((item) => item.teg === teg.name)
-            // }
-            this.filter = this.articlesFull.filter((item) => item.teg === teg.name)
+        getFilterListComponents(tag) {
+            this.tagsBlog.forEach(itemTag => itemTag.tagChecked = false);
+            tag.tagChecked = true;
+
+            const filteredNameList = tag.name === 'All'
+                ? this.articles.map(item => item.nameComponent)
+                : this.articles
+                    .filter((itemArticle) => itemArticle.tag === tag.name)
+                    .map(item => item.nameComponent)
+
+            this.filterListComponents = this.currentArticleComponents.filter(item => filteredNameList.includes(item.name));
+        },
+
+        async loadArticleComponents(nameComponents) {  // Динамически импортируем компоненты выбранных статей
+            try {
+                const results = await Promise.allSettled(
+                    nameComponents.map(async (nameComponent) => {
+                        const ArticleComponent = await import(`@/components/articles_full_components/${nameComponent}.vue`);
+                        return ArticleComponent.default;
+                    })
+                );
+                this.currentArticleComponents = results
+                    .filter(result => result.status === 'fulfilled')
+                    .map(result => result.value);
+
+                const rejectedResults = results.filter(result => result.status === 'rejected');
+                rejectedResults.forEach(result => console.error("Failed to load component:", result.reason));
+                this.errorLoadSomeComponent = true;
+
+            } catch (error) {
+                console.error("Failed to load article components:", error);
+            }
         }
     }
 }
@@ -82,14 +108,17 @@ export default {
     padding-right: calc(50% - 580px);
 }
 
+.indent-back-button {
+    margin-top: 90px;
+}
+
 .full-articles {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 52px;
-    margin-top: 100px;
 
-    .full-articles__tegs {
-        .tegs__heading {
+    .full-articles__tags {
+        .tags__heading {
             color: $colorHeading;
             font-size: 25px;
             font-family: $fontSerif;
@@ -100,7 +129,7 @@ export default {
             margin-bottom: 24px;
         }
 
-        .full-articles__tegs-block {
+        .full-articles__tags-block {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
@@ -127,7 +156,7 @@ export default {
             }
         }
 
-        .checked-teg {
+        .checked-tag {
             background-color: #292F36;
             color: #FFF
         }

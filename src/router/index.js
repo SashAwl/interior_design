@@ -5,11 +5,12 @@ import BlogPage from '../pages/BlogPage.vue'
 import HomePage from '../pages/HomePage.vue'
 import NotFoundPage from '../pages/NotFoundPage.vue'
 import BlogDetailsPage from '../pages/BlogDetailsPage.vue'
+import BlogDetailsPageItem from '../pages/BlogDetailsPageItem.vue'
 import ProjectDetailsPage from '../pages/ProjectDetailsPage.vue'
 
 Vue.use(VueRouter)
 
-export default new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes: [
     {
@@ -33,6 +34,12 @@ export default new VueRouter({
       component: BlogDetailsPage
     },
     {
+      path: '/blog-details/:id',
+      name: 'BlogDetailsPageItem',
+      component: BlogDetailsPageItem,
+      props: true
+    },
+    {
       path: '/project-details',
       name: 'ProjectDetailsPage',
       component: ProjectDetailsPage
@@ -44,3 +51,9 @@ export default new VueRouter({
     }
   ]
 })
+
+router.afterEach(() => {
+  window.scrollTo(0, 0); // Прокрутка страницы к верху
+});
+
+export default router;

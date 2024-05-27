@@ -26,58 +26,58 @@ export default new Vuex.Store({
       ],
     articles:  // данные для компонента Articles&News
       [
-        { src: require("../assets/articles/articles1.jpg"), type: "Kitchen Design", linkFullText: "#", headText: "Let’s Get Solution For Building Construction Work", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "15 December,2022" },
-        { src: require("../assets/articles/articles3.jpg"), type: "Interior Design", linkFullText: "#", headText: "Best For Any Office & Business Interior Solution", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "18 December,2022" },
-        { src: require("../assets/articles/articles4.jpg"), type: "Kitchen Design", linkFullText: "#", headText: "Let’s Get Solution For Building Construction Work", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "20 December,2022" },
-        { src: require("../assets/articles/articles5.jpg"), type: "Living Design", linkFullText: "#", headText: "Low Cost Latest Invented Interior Designing Ideas.", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "22 December,2022" },
-        { src: require("../assets/articles/articles2.jpg"), type: "Living Design", linkFullText: "#", headText: "Low Cost Latest Invented Interior Designing Ideas.", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "22 December,2022" },
-        { src: require("../assets/articles/articles6.jpg"), type: "Interior Design", linkFullText: "#", headText: "Best For Any Office & Business Interior Solution", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "25 December,2022" },
-        { src: require("../assets/articles/articles7.jpg"), type: "Interior Design", linkFullText: "#", headText: "Best For Any Office & Business Interior Solution", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "28 December,2022" }
+        { id: 1, src: require("../assets/articles/articles1.jpg"), type: "Kitchen Design", headText: "Let’s Get Solution For Building Construction Work", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "15 December,2022", nameComponent: 'KitchenArticleFull', tag: 'Kitchen' },
+        { id: 2, src: require("../assets/articles/articles3.jpg"), type: "Interior Design", headText: "Best For Any Office & Business Interior Solution", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "18 December,2022", nameComponent: 'BuildingArticleFull', tag: 'Building' },
+        { id: 3, src: require("../assets/articles/articles4.jpg"), type: "Kitchen Design", headText: "Let’s Get Solution For Building Construction Work", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "20 December,2022", nameComponent: 'PlanningKitchenArticleFull', tag: 'Kitchen Planning' },
+        { id: 4, src: require("../assets/articles/articles5.jpg"), type: "Living Design", headText: "Low Cost Latest Invented Interior Designing Ideas.", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "22 December,2022", nameComponent: 'BedroomArticleFull', tag: 'Bedroom' },
+        { id: 5, src: require("../assets/articles/articles2.jpg"), type: "Living Design", headText: "Low Cost Latest Invented Interior Designing Ideas.", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "22 December,2022", nameComponent: 'BedroomArticleFull', tag: 'Bedroom' },
+        { id: 6, src: require("../assets/articles/articles6.jpg"), type: "Interior Design", headText: "Best For Any Office & Business Interior Solution", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "25 December,2022", nameComponent: 'ArchitectureArticleFull', tag: 'Architecture' },
+        { id: 7, src: require("../assets/articles/articles7.jpg"), type: "Interior Design", headText: "Best For Any Office & Business Interior Solution", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "28 December,2022", nameComponent: 'ArchitectureArticleFull', tag: 'Architecture' },
+        { id: 8, src: require("../assets/articles/articles1.jpg"), type: "Kitchen Design", headText: "Let’s Get Solution For Building Construction Work", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "15 December,2022", nameComponent: 'KitchenArticleFull', tag: 'Kitchen' },
+        { id: 9, src: require("../assets/articles/articles3.jpg"), type: "Interior Design", headText: "Best For Any Office & Business Interior Solution", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "18 December,2022", nameComponent: 'BuildingArticleFull', tag: 'Building' },
+        { id: 10, src: require("../assets/articles/articles4.jpg"), type: "Kitchen Design", headText: "Let’s Get Solution For Building Construction Work", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "20 December,2022", nameComponent: 'PlanningKitchenArticleFull', tag: 'Kitchen Planning' },
+        { id: 11, src: require("../assets/articles/articles5.jpg"), type: "Living Design", headText: "Low Cost Latest Invented Interior Designing Ideas.", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "22 December,2022", nameComponent: 'BedroomArticleFull', tag: 'Bedroom' },
+        { id: 12, src: require("../assets/articles/articles2.jpg"), type: "Living Design", headText: "Low Cost Latest Invented Interior Designing Ideas.", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "22 December,2022", nameComponent: 'BedroomArticleFull', tag: 'Bedroom' },
+        { id: 13, src: require("../assets/articles/articles6.jpg"), type: "Interior Design", headText: "Best For Any Office & Business Interior Solution", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "25 December,2022", nameComponent: 'ArchitectureArticleFull', tag: 'Architecture' },
+        { id: 14, src: require("../assets/articles/articles7.jpg"), type: "Interior Design", headText: "Best For Any Office & Business Interior Solution", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "28 December,2022", nameComponent: 'ArchitectureArticleFull', tag: 'Architecture' }
       ],
-    articlesFull: [  // данные для страницы BlogDetailsPage
-      { name: 'KitchenArticleFull', teg: 'Kitchen' },
-      { name: 'PlanningKitchenArticleFull', teg: 'Kitchen Planning' },
-      { name: 'ArchitectureArticleFull', teg: 'Architecture' },
-      { name: 'BuildingArticleFull', teg: 'Building' },
-      { name: 'BedroomArticleFull', teg: 'Bedroom' },
-      { name: 'Bedroom2ArticleFull', teg: 'Bedroom' }
-    ],
-    tegsBlog:  // данные для страницы BlogDetailsPage
+    tagsBlog:  // данные для страницы BlogDetailsPage
       [
-        { name: "Kitchen", tegChecked: true },
-        { name: "Kitchen Planning", tegChecked: false },
-        { name: "Architecture", tegChecked: false },
-        { name: "Building", tegChecked: false },
-        { name: "Bedroom", tegChecked: false }
+        { name: "Kitchen", tagChecked: false },
+        { name: "Kitchen Planning", tagChecked: false },
+        { name: "Architecture", tagChecked: false },
+        { name: "Building", tagChecked: false },
+        { name: "Bedroom", tagChecked: false },
+        { name: "All", tagChecked: true }
       ],
     projects: // данные для страницы ProjectPage
       [
-        { heading: 'Minimal Bedroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.1.jpg"), teg: 'Bedroom' },
-        { heading: 'Minimal Bedroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.2.jpg"), teg: 'Bedroom' },
-        { heading: 'Classical Minimal Bedroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.3.jpg"), teg: 'Bedroom' },
-        { heading: 'Modern Bedroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.4.jpg"), teg: 'Bedroom' },
-        { heading: 'Modern Bedroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.5.jpg"), teg: 'Bedroom' },
-        { heading: 'Minimal Bedroom Table', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.6.jpg"), teg: 'Bedroom' },
-        { heading: 'Minimal Bedroom Table', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.7.jpg"), teg: 'Bedroom' },
-        { heading: 'Modern Bathroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img2.0.jpg"), teg: 'Bathroom' },
-        { heading: 'Minimal Bathroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img2.1.jpg"), teg: 'Bathroom' },
-        { heading: 'Minimal Bathroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img2.2.jpg"), teg: 'Bathroom' },
-        { heading: 'Classical Minimal Bathroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img2.3.jpeg"), teg: 'Bathroom' },
-        { heading: 'Minimal Bath', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img2.4.jpg"), teg: 'Bathroom' },
-        { heading: 'Classical Kitchen', links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img3.1.jpg"), teg: 'Kitchen' },
-        { heading: 'Minimal Kitchen', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img3.2.jpg"), teg: 'Kitchen' },
-        { heading: 'Minimal Living Room', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img4.1.jpg"), teg: 'Living Area' },
-        { heading: 'Classical Living Room', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img4.2.jpg"), teg: 'Living Area' },
-        { heading: 'Classical Living Room', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img4.3.jpg"), teg: 'Living Area' },
-        { heading: 'Classical Living Room', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img4.4.jpg"), teg: 'Living Area' },
-        { heading: 'Minimal Kitchen table', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img3.4.jpg"), teg: 'Living Area' }
+        { heading: 'Minimal Bedroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.1.jpg"), tag: 'Bedroom' },
+        { heading: 'Minimal Bedroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.2.jpg"), tag: 'Bedroom' },
+        { heading: 'Classical Minimal Bedroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.3.jpg"), tag: 'Bedroom' },
+        { heading: 'Modern Bedroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.4.jpg"), tag: 'Bedroom' },
+        { heading: 'Modern Bedroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.5.jpg"), tag: 'Bedroom' },
+        { heading: 'Minimal Bedroom Table', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.6.jpg"), tag: 'Bedroom' },
+        { heading: 'Minimal Bedroom Table', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.7.jpg"), tag: 'Bedroom' },
+        { heading: 'Modern Bathroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img2.0.jpg"), tag: 'Bathroom' },
+        { heading: 'Minimal Bathroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img2.1.jpg"), tag: 'Bathroom' },
+        { heading: 'Minimal Bathroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img2.2.jpg"), tag: 'Bathroom' },
+        { heading: 'Classical Minimal Bathroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img2.3.jpeg"), tag: 'Bathroom' },
+        { heading: 'Minimal Bath', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img2.4.jpg"), tag: 'Bathroom' },
+        { heading: 'Classical Kitchen', links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img3.1.jpg"), tag: 'Kitchen' },
+        { heading: 'Minimal Kitchen', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img3.2.jpg"), tag: 'Kitchen' },
+        { heading: 'Minimal Living Room', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img4.1.jpg"), tag: 'Living Area' },
+        { heading: 'Classical Living Room', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img4.2.jpg"), tag: 'Living Area' },
+        { heading: 'Classical Living Room', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img4.3.jpg"), tag: 'Living Area' },
+        { heading: 'Classical Living Room', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img4.4.jpg"), tag: 'Living Area' },
+        { heading: 'Minimal Kitchen table', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img3.4.jpg"), tag: 'Living Area' }
       ],
-    tegs: // данные для страницы ProjectPage
+    tags: // данные для страницы ProjectPage
       [
-        { tegName: 'Bathroom', checked: false },
-        { tegName: 'Bedroom', checked: false },
-        { tegName: 'Kitchen', checked: false },
-        { tegName: 'Living Area', checked: false }
+        { tagName: 'Bathroom', checked: false },
+        { tagName: 'Bedroom', checked: false },
+        { tagName: 'Kitchen', checked: false },
+        { tagName: 'Living Area', checked: false }
       ],
     sliderImgList:
       [
