@@ -4,21 +4,25 @@
         <BackButton class="center indent-back-button" />
         <div class="full-articles center">
             <div class="full-articles__list">
-                <component v-for="item in filterListComponents" :is="item" :key="item.id">
-                </component>
+                <div class="articles-components">
+                    <component v-for="item in visibleArticleList" :is="item" :key="item.id">
+                    </component>
+                </div>
+                <button @click="loadMoreArticles" class="load-more" :disabled="isInLastArticle"
+                    :class="{ 'disabled-button': isInLastArticle }">
+                    Load more
+                </button>
             </div>
-
             <div class="full-articles__tags">
                 <h5 class="tags__heading">
                     Tags
                 </h5>
                 <div class="full-articles__tags-block">
-                    <button @click="getFilterListComponents(tag)" v-for="tag in tagsBlog" :key="tag.id"
+                    <button @click="getFilterListComponents(tag)" v-for=" tag  in tags" :key="tag.id"
                         class='full-articles__tags-block-item' :class="{ 'checked-tag': tag.tagChecked }">{{
             tag.name }}</button>
                 </div>
             </div>
-
         </div>
     </div>
 </template>
@@ -48,31 +52,49 @@ export default {
                 heading: "",
                 srcImg: require("../assets/BannerBlog.jpg")
             },
-            filterListComponents: null,
+            filterListComponents: [],
             currentArticleComponents: null,
-            errorLoadSomeComponent: false
+            errorLoadSomeComponent: false,
+            perPage: 1,
+            endArticlePerPage: 1,
+            tags: [{ name: 'All', tagChecked: true }]
         }
     },
     computed: {
-        ...mapState(['articles', 'tagsBlog'])
+        ...mapState(['articles']),
+
+        visibleArticleList() {
+            return this.filterListComponents.slice(0, this.endArticlePerPage);
+        },
+        isInLastArticle() {
+            return this.endArticlePerPage === this.filterListComponents.length;
+        }
     },
     async created() {
+        const tagNameList = Array.from(new Set(this.articles.map(article => article.tag)));
+        const tagList = tagNameList.map(tagItem => ({
+            name: tagItem,
+            tagChecked: false
+        }));
+        this.tags.push(...tagList);
+
         await this.loadArticleComponents(this.articles.map(article => article.nameComponent));
         this.filterListComponents = this.currentArticleComponents;
-        console.log(this.filterListComponents)
     },
     methods: {  // фильтрует данные на странице
         getFilterListComponents(tag) {
-            this.tagsBlog.forEach(itemTag => itemTag.tagChecked = false);
+            this.tags.forEach(itemTag => itemTag.tagChecked = false);
             tag.tagChecked = true;
 
             const filteredNameList = tag.name === 'All'
                 ? this.articles.map(item => item.nameComponent)
                 : this.articles
-                    .filter((itemArticle) => itemArticle.tag === tag.name)
+                    .filter(itemArticle => itemArticle.tag === tag.name)
                     .map(item => item.nameComponent)
 
             this.filterListComponents = this.currentArticleComponents.filter(item => filteredNameList.includes(item.name));
+
+            this.endArticlePerPage = this.perPage;
         },
 
         async loadArticleComponents(nameComponents) {  // Динамически импортируем компоненты выбранных статей
@@ -94,6 +116,9 @@ export default {
             } catch (error) {
                 console.error("Failed to load article components:", error);
             }
+        },
+        loadMoreArticles() {
+            this.endArticlePerPage = Math.min(this.endArticlePerPage + this.perPage, this.filterListComponents.length);
         }
     }
 }
@@ -116,6 +141,35 @@ export default {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 52px;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .load-more {
+        margin-top: 50px;
+        border: none;
+        color: $colorText;
+        font-size: 22px;
+        font-family: $fontSansSerif;
+        font-weight: 400;
+        padding: 9px 74px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: transform 0.1s ease-in;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    .disabled-button {
+        opacity: 50%;
+        cursor: auto;
+        pointer-events: none;
+    }
 
     .full-articles__tags {
         .tags__heading {
@@ -163,6 +217,12 @@ export default {
     }
 
     .articles__list-item {
+
+
+        .load-more {
+            margin: 0 auto;
+            border: none;
+        }
 
         .item__heading {
             color: $colorHeading;

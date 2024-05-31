@@ -41,15 +41,6 @@ export default new Vuex.Store({
         { id: 13, src: require("../assets/articles/articles6.jpg"), type: "Interior Design", headText: "Best For Any Office & Business Interior Solution", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "25 December,2022", nameComponent: 'ArchitectureArticleFull', tag: 'Architecture' },
         { id: 14, src: require("../assets/articles/articles7.jpg"), type: "Interior Design", headText: "Best For Any Office & Business Interior Solution", describeText: "<p>Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis dignissim maximus.posuere in.Contrary to popular belief.</p><p>Lorem Ipsum is not simply random text. It has roots in a piece of classica.</p>", date: "28 December,2022", nameComponent: 'ArchitectureArticleFull', tag: 'Architecture' }
       ],
-    tagsBlog:  // данные для страницы BlogDetailsPage
-      [
-        { name: "Kitchen", tagChecked: false },
-        { name: "Kitchen Planning", tagChecked: false },
-        { name: "Architecture", tagChecked: false },
-        { name: "Building", tagChecked: false },
-        { name: "Bedroom", tagChecked: false },
-        { name: "All", tagChecked: true }
-      ],
     projects: // данные для страницы ProjectPage
       [
         { heading: 'Minimal Bedroom', linkDetails: "", links: [{ name: 'Decor', link: '#' }, { name: 'Architecture', link: '#' }], img: require("../assets/our_project/img1.1.jpg"), tag: 'Bedroom' },
