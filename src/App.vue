@@ -1,20 +1,25 @@
 <template>
   <div id="app">
     <HeaderMenu class="center" />
-    <router-view />
+    <main>
+      <router-view />
+    </main>
+    <BackToTopButton />
     <FooterSite class="center" />
   </div>
 </template>
 
 <script>
-import HeaderMenu from './components/HeaderMenu.vue'
-import FooterSite from './components/FooterSite.vue'
+import HeaderMenu from './components/HeaderMenu.vue';
+import FooterSite from './components/FooterSite.vue';
+import BackToTopButton from './components/BackToTopButton.vue';
 
 export default {
   name: 'App',
   components: {
     HeaderMenu,
     FooterSite,
+    BackToTopButton
   },
   data() {
     return {}

@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <header class="header">
         <div class="header__logo">
             <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -13,7 +13,7 @@
             <router-link to="/project" class="header__nav-item">Project</router-link>
             <router-link to="/blog" class="header__nav-item">Blog</router-link>
         </nav>
-    </div>
+    </header>
 </template>
 
 <script>
