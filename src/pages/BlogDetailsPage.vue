@@ -36,13 +36,7 @@ export default {
     name: 'BlogDetailsPage',
     components: {
         TopBlock,
-        BackButton,
-        // KitchenArticleFull,
-        // PlanningKitchenArticleFull,
-        // ArchitectureArticleFull,
-        // BuildingArticleFull,
-        // BedroomArticleFull,
-        // Bedroom2ArticleFull
+        BackButton
     },
     data() {
         return {

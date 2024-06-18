@@ -1,6 +1,7 @@
 <template>
     <div>
         <TopBlock :topData="topData" />
+        <BackButton class="center indent-back-button" />
         <div class="center">
             <div class="content">
                 <h3 class="content_heading">{{ projectDetails.heading }}</h3>
@@ -12,9 +13,10 @@
 </template>
 
 <script>
-import TopBlock from '../components/TopBlock.vue'
-import { mapMutations, mapState } from "vuex"
-import SliderImg from '../components/slider_components/SliderImg.vue'
+import TopBlock from '../components/TopBlock.vue';
+import BackButton from '@/components/BackButton.vue';
+import { mapMutations, mapState } from "vuex";
+import SliderImg from '../components/slider_components/SliderImg.vue';
 
 
 export default {
@@ -32,7 +34,8 @@ export default {
     },
     components: {
         TopBlock,
-        SliderImg
+        SliderImg,
+        BackButton
     },
     computed: {
         ...mapState(['projectDetails', 'sliderImgList'])
@@ -47,9 +50,18 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Jost:wght@100;400&display=swap');
 @import "../assets/_variables";
 
+.center {
+    padding-left: calc(50% - 580px);
+    padding-right: calc(50% - 580px);
+}
+
+.indent-back-button {
+    margin-top: 90px;
+}
+
 .content {
     width: 658px;
-    margin: 130px auto 80px;
+    margin: 50px auto 80px;
 
     &_heading {
         color: $colorHeading;
