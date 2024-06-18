@@ -7,6 +7,8 @@ import NotFoundPage from '../pages/NotFoundPage.vue'
 import BlogDetailsPage from '../pages/BlogDetailsPage.vue'
 import BlogDetailsPageItem from '../pages/BlogDetailsPageItem.vue'
 import ProjectDetailsPage from '../pages/ProjectDetailsPage.vue'
+import FavoriteProjects from '@/pages/FavoriteProjects.vue'
+import AuthentificationForm from '@/components/AuthentificationForm.vue'
 
 Vue.use(VueRouter)
 
@@ -43,6 +45,16 @@ const router = new VueRouter({
       path: '/project-details',
       name: 'ProjectDetailsPage',
       component: ProjectDetailsPage
+    },
+    {
+      path: '/favorite-projects',
+      name: 'FavoriteProjects',
+      component: FavoriteProjects
+    },
+    {
+      path: '/auth-form',
+      name: 'AuthentificationForm',
+      component: AuthentificationForm
     },
     {
       path: '/*',
