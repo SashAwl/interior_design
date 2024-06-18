@@ -4,26 +4,8 @@
             <button v-for="(tag, index) in tags" :key="tag.index" @click="checkFilterButton(index, tag)"
                 class="tag-button" :class="{ 'tag-button-checked': tag.checked }">{{ tag.tagName }}</button>
         </div>
-        <div class="articles">
-            <div class="article" v-for="(project, index) in getFilterListPages" :key="index">
-                <router-link to="project-details" class="photo"><img :src="project.img" alt="photo"></router-link>
-                <div class="article-text">
-                    <div>
-                        <router-link to="project-details">
-                            <h3 class="heading">{{ project.heading }}</h3>
-                        </router-link>
-                        <a href="project.links[0].link" class="text">{{ project.links[0].name }}</a> /
-                        <a href="project.links[1].link" class="text">{{ project.links[1].name }}</a>
-                    </div>
-                    <router-link to="project-details">
-                        <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="35" cy="35" r="35" fill="#F4F0EC" />
-                            <path d="M32 44L40 35L32 26" stroke="#292F36" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg></router-link>
-                </div>
-            </div>
-        </div>
+
+        <OurProjectBox :projectList="getFilterListPages" />
 
         <PaginationPages :currentPage="getPaginationDetails.currentPage"
             :maxVisibleButtons="getPaginationDetails.countVisibleButtons" :totalPages="getPaginationDetails.totalPages"
@@ -33,12 +15,14 @@
 
 <script>
 import PaginationPages from './PaginationPages.vue';
+import OurProjectBox from './OurProjectsBox.vue';
 import { mapState } from 'vuex';
 
 export default {
     name: 'OurProject',
     components: {
         PaginationPages,
+        OurProjectBox
     },
     data() {
         return {
@@ -49,14 +33,12 @@ export default {
                 perPage: 4,
                 totalPages: 10,
                 countVisibleButtons: 3
-            }
-
+            },
         }
     },
     created() {
-        this.filterList = this.projects;
-        this.tagsState = this.tags;
-        this.paginationDetails.totalPages = Math.ceil(this.filterList.length / this.paginationDetails.perPage);
+        this.inizializePageData();
+        this.setupPagination();
     },
     computed: {
         ...mapState(['projects', 'tags']),
@@ -92,12 +74,29 @@ export default {
             this.tagsState.forEach(item => item.checked = false);
             this.tags[index].checked = true;
 
-            this.filterList = this.projects.filter(item => item.tag === tag.tagName);
-            this.paginationDetails.currentPage = 1;
+            this.updateFilterList(tag);
+            this.resetToFirstPage();
         },
 
         onPageChange(page) {
             this.paginationDetails.currentPage = page;
+        },
+
+        inizializePageData() {
+            this.filterList = this.projects;
+            this.tagsState = this.tags;
+        },
+
+        setupPagination() {
+            this.paginationDetails.totalPages = Math.ceil(this.filterList.length / this.paginationDetails.perPage);
+        },
+
+        updateFilterList(tag) {
+            this.filterList = this.projects.filter(item => item.tag === tag.tagName);
+        },
+
+        resetToFirstPage() {
+            this.paginationDetails.currentPage = 1;
         }
     }
 }
@@ -152,66 +151,5 @@ export default {
             color: #fff;
         }
     }
-}
-
-.articles {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-
-    .article {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        font-weight: 400;
-
-        &-text {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            margin: 10px 0;
-
-            svg {
-                transition: transform 0.1s ease-in;
-            }
-
-            svg:hover {
-                transform: scale(1.2);
-            }
-        }
-
-        .photo {
-            display: block;
-            width: 100%;
-
-            img {
-                width: 100%;
-                transition: transform 0.1s ease-in;
-
-                &:hover {
-                    transform: scale(1.02);
-                    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-                }
-            }
-        }
-
-        .heading {
-            color: #292F36;
-            font-family: $fontSerif;
-            font-size: 25px;
-            letter-spacing: 0.5px;
-            margin-bottom: 7px;
-        }
-
-        .text {
-            color: #4D5053;
-            font-family: Jost;
-            font-size: 22px;
-            letter-spacing: 0.22px;
-            text-decoration: none;
-        }
-    }
-
 }
 </style>
