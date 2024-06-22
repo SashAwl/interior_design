@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <HeaderMenu class="center" />
+    <HeaderMenu class="center" @logIn="hideOpenAuthForm" />
+    <AuthentificationForm @closeAuthForm="hideOpenAuthForm" v-if="isOpenAuthForm" />
     <main>
       <router-view />
     </main>
@@ -13,16 +14,25 @@
 import HeaderMenu from './components/HeaderMenu.vue';
 import FooterSite from './components/FooterSite.vue';
 import BackToTopButton from './components/BackToTopButton.vue';
+import AuthentificationForm from './components/AuthentificationForm.vue';
 
 export default {
   name: 'App',
   components: {
     HeaderMenu,
     FooterSite,
-    BackToTopButton
+    BackToTopButton,
+    AuthentificationForm
   },
   data() {
-    return {}
+    return {
+      isOpenAuthForm: true
+    }
+  },
+  methods: {
+    hideOpenAuthForm() {
+      this.isOpenAuthForm = !this.isOpenAuthForm;
+    }
   }
 }
 </script>
