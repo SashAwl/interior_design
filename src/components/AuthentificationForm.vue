@@ -1,17 +1,18 @@
 <template>
     <div class="auth">
         <div class="auth-form">
-            <form action="#">
+            <form @submit.prevent="signIn">
                 <h3 class="auth-form-heading">Sign in to Interno</h3>
-                <p class="auth-form-text">Login</p>
+                <p class="auth-form-text">Login {{ login }}</p>
                 <input type="text" class="auth-form-text" v-model="login">
-                <p class="auth-form-text">Password</p>
-                <input type="password" class="auth-form-text" v-model="passwordData">
-                <p class="auth-form-error">Enter a valid login and password combination</p>
+                <p class="auth-form-text">Password{{ password }}</p>
+                <input type="password" class="auth-form-text" v-model="password">
+                <p class="auth-form-error"> {{ error }}</p>
                 <button type="submit" class="auth-form-submit auth-form-text">Login</button>
                 <div class="auth-form-register">
                     <router-link to="register">Зарегистрироваться</router-link>
                 </div>
+                <!-- v-if="error" -->
             </form>
             <svg @click="closeAuthForm" class="auth-form-close" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 384 512">
@@ -23,17 +24,33 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     name: 'AuthentificationForm',
     data() {
         return {
             login: '',
-            passwordData: ''
+            password: '',
+            error: ''
         }
     },
     methods: {
         closeAuthForm() {
             this.$emit('closeAuthForm');
+        },
+
+        async signIn() {
+            try {
+                const response = axios.post('/login', {
+                    username: this.login,
+                    password: this.password
+                });
+                alert('successful' + (await response).data.token) //перефдресация
+
+            } catch (error) {
+                this.error = error.response.data.message;
+            }
         }
     }
 }
