@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      isOpenAuthForm: true
+      isOpenAuthForm: false
     }
   },
   methods: {

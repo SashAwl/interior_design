@@ -9,9 +9,7 @@ const users = [
 ];
 
 mock.onPost('/login').reply(req => {
-    console.log(req)
     const { username, password } = JSON.parse(req.data);
-    console.log(username, password)
     const user = users.find(item => item.username === username && item.password === password);
 
     if (user) {
