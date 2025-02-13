@@ -29,11 +29,11 @@ npm run serve
 ```
 
 ## Technologies
-  -Vue.js
-  -Vue Router
-  -Webpack
-  -GitHub
-  -LocalStorage
+  -Vue.js  
+  -Vue Router  
+  -Webpack  
+  -GitHub  
+  -LocalStorage  
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
