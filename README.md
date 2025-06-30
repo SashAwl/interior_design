@@ -1,12 +1,12 @@
 # Interior Design Project
 
-## Деплой
+## Deploy
 
-Перейти к работающему проекту можно по следующей ссылке:
+You can access the working project using the following link:
 [https://sashawl.github.io/interior_design/](https://sashawl.github.io/interior_design/)
 
-## Скриншот
-![Скриншот](https://github.com/user-attachments/assets/9aee4baf-32fd-4a2b-b166-5ab01ee9545a)
+## Screenshot
+![Screenshot](https://github.com/user-attachments/assets/9aee4baf-32fd-4a2b-b166-5ab01ee9545a)
 
 ## Project setup
    ```bash
